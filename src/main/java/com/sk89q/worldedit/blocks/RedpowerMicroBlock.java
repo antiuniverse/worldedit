@@ -32,7 +32,7 @@ public class RedpowerMicroBlock extends BaseBlock implements TileEntityBlock {
     /**
      * Stores the micro block.
      */
-	public final static int NUM_COVERS = 29;
+    public final static int NUM_COVERS = 29;
     private int CoverSides;
     private short Covers[];
 
@@ -59,13 +59,13 @@ public class RedpowerMicroBlock extends BaseBlock implements TileEntityBlock {
     public int GetCoverSides() { return CoverSides; }
 
     public void SetCoverSides(int newCoverSides) {
-    	CoverSides = newCoverSides;
+        CoverSides = newCoverSides;
     }
 
     public short[] GetCovers() { return Covers; }
 
     public void SetCovers(short newCovers[]) {
-    	Covers = newCovers;
+        Covers = newCovers;
     }
 
     /**
@@ -92,11 +92,11 @@ public class RedpowerMicroBlock extends BaseBlock implements TileEntityBlock {
         byte coversArray[] = new byte[Integer.bitCount(CoverSides) * 2];
         int i = 0;
         for (int j = 0; j < NUM_COVERS; j++) {
-        	if ( (CoverSides & 1 << j) != 0 ) {
-        		coversArray[i]   = (byte)(Covers[j] & 0xFF);
-        		coversArray[i+1] = (byte)(Covers[j] >> 8);
-        		i += 2;
-        	}
+            if ( (CoverSides & 1 << j) != 0 ) {
+                coversArray[i]   = (byte)(Covers[j] & 0xFF);
+                coversArray[i+1] = (byte)(Covers[j] >> 8);
+                i += 2;
+            }
         }
 
         values.put("cvs", new ByteArrayTag("cvs", coversArray));
@@ -130,17 +130,17 @@ public class RedpowerMicroBlock extends BaseBlock implements TileEntityBlock {
 
         t = values.get("cvs");
         if (t instanceof ByteArrayTag) {
-        	byte[] coversArray = ((ByteArrayTag) t).getValue();
+            byte[] coversArray = ((ByteArrayTag) t).getValue();
 
-        	if (coversArray != null && CoverSides > 0) {
-        		int i = 0;
-        		for (int j = 0; j < NUM_COVERS; j++) {
-        			if ( (CoverSides & 1 << j) != 0 ) {
-        				Covers[j] = (short)( (coversArray[i] & 0xFF) + ((coversArray[i+1] & 0xFF) << 8) );
-        				i += 2;
-        			}
-        		}
-        	}
+            if (coversArray != null && CoverSides > 0) {
+                int i = 0;
+                for (int j = 0; j < NUM_COVERS; j++) {
+                    if ( (CoverSides & 1 << j) != 0 ) {
+                        Covers[j] = (short)( (coversArray[i] & 0xFF) + ((coversArray[i+1] & 0xFF) << 8) );
+                        i += 2;
+                    }
+                }
+            }
         }
     }
 }
