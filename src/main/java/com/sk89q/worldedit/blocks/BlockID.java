@@ -151,5 +151,6 @@ public final class BlockID {
     public static final int DRAGON_EGG = 122;
     public static final int REDSTONE_LAMP_OFF = 123;
     public static final int REDSTONE_LAMP_ON = 124;
+    // RedPower hack
     public static final int REDPOWER_MICRO = 136;
 }
