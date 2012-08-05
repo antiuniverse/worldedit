@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+
 import com.sk89q.worldedit.regions.*;
 import com.sk89q.worldedit.util.TreeGenerator;
 import com.sk89q.worldedit.bags.*;
@@ -39,6 +40,9 @@ import com.sk89q.worldedit.expression.ExpressionException;
 import com.sk89q.worldedit.expression.runtime.RValue;
 import com.sk89q.worldedit.masks.Mask;
 import com.sk89q.worldedit.patterns.*;
+
+// RedPower hack
+import com.sk89q.worldedit.redpower.RedPowerHooks;
 
 /**
  * This class can wrap all block editing operations into one "edit session" that
@@ -452,15 +456,14 @@ public class EditSession {
             return block;
         }
 
-        // RedPower hack
-        case BlockID.REDPOWER_MICRO: {
-            RedpowerMicroBlock block = new RedpowerMicroBlock(data);
-            world.copyFromWorld(pt, block);
-            return block;
-        }
+        default: {
+            // RedPower hack
+            BaseBlock hookBlock = RedPowerHooks.rawGetBlock(type, data, pt, world);
+            if (hookBlock != null)
+                return hookBlock;
 
-        default:
             return new BaseBlock(type, data);
+        }
         }
     }
 

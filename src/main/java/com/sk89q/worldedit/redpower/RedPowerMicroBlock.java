@@ -17,9 +17,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.sk89q.worldedit.blocks;
+package com.sk89q.worldedit.redpower;
 
 import com.sk89q.jnbt.*;
+import com.sk89q.worldedit.blocks.BaseBlock;
+import com.sk89q.worldedit.blocks.TileEntityBlock;
 import com.sk89q.worldedit.data.*;
 import java.util.Map;
 import java.util.HashMap;
@@ -28,7 +30,7 @@ import java.util.HashMap;
  *
  * @author Zach Brockway
  */
-public class RedpowerMicroBlock extends BaseBlock implements TileEntityBlock {
+public class RedPowerMicroBlock extends BaseBlock implements TileEntityBlock {
     /**
      * Stores the micro block.
      */
@@ -39,8 +41,8 @@ public class RedpowerMicroBlock extends BaseBlock implements TileEntityBlock {
     /**
      * Construct the micro block.
      */
-    public RedpowerMicroBlock() {
-        super(BlockID.REDPOWER_MICRO);
+    public RedPowerMicroBlock() {
+        super(RedPowerBlockID.MICRO);
         this.CoverSides = 0;
         this.Covers = new short[NUM_COVERS];
     }
@@ -50,8 +52,8 @@ public class RedpowerMicroBlock extends BaseBlock implements TileEntityBlock {
      *
      * @param data
      */
-    public RedpowerMicroBlock(int data) {
-        super(BlockID.REDPOWER_MICRO, data);
+    public RedPowerMicroBlock(int data) {
+        super(RedPowerBlockID.MICRO, data);
         this.CoverSides = 0;
         this.Covers = new short[NUM_COVERS];
     }
