@@ -97,6 +97,20 @@
       <version>1.3.0-SNAPSHOT</version>
       <optional>true</optional>
     </dependency>
+
+    <!-- RedPower hack -->
+    <dependency>
+      <groupId>org.bukkit</groupId>
+      <artifactId>craftbukkit</artifactId>
+      <version>1.2.5-R4.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>eloraam</groupId>
+      <artifactId>redpower-all</artifactId>
+      <version>2.0p5b2-mcpc1.2.5</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>

@@ -452,6 +452,13 @@ public class EditSession {
             return block;
         }
 
+        // RedPower hack
+        case BlockID.REDPOWER_MICRO: {
+            RedpowerMicroBlock block = new RedpowerMicroBlock(data);
+            world.copyFromWorld(pt, block);
+            return block;
+        }
+
         default:
             return new BaseBlock(type, data);
         }

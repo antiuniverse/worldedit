@@ -72,6 +72,11 @@ import com.sk89q.worldedit.blocks.*;
 import com.sk89q.worldedit.EntityType;
 import com.sk89q.worldedit.regions.Region;
 
+// RedPower hack
+import eloraam.core.TileCovered;
+import org.bukkit.craftbukkit.CraftWorld;
+import net.minecraft.server.TileEntity;
+
 public class BukkitWorld extends LocalWorld {
     private World world;
 
@@ -340,6 +345,17 @@ public class BukkitWorld extends LocalWorld {
             return true;
         }
 
+        // RedPower hack
+        TileEntity te = ((CraftWorld) world).getTileEntityAt(pt.getBlockX(), pt.getBlockY(), pt.getBlockZ());
+        if (te instanceof TileCovered) {
+            TileCovered tc = (TileCovered)te;
+            RedpowerMicroBlock we = (RedpowerMicroBlock) block;
+            tc.CoverSides = we.GetCoverSides();
+            tc.Covers = we.GetCovers().clone();
+            tc.updateBlockChange();
+            return true;
+        }
+
         return false;
     }
 
@@ -400,6 +416,17 @@ public class BukkitWorld extends LocalWorld {
             org.bukkit.block.NoteBlock bukkit = (org.bukkit.block.NoteBlock) state;
             NoteBlock we = (NoteBlock) block;
             we.setNote(bukkit.getRawNote());
+            return true;
+        }
+
+        // RedPower hack
+        TileEntity te = ((CraftWorld) world).getTileEntityAt(pt.getBlockX(), pt.getBlockY(), pt.getBlockZ());
+        if (te instanceof TileCovered) {
+            TileCovered tc = (TileCovered)te;
+            RedpowerMicroBlock we = (RedpowerMicroBlock) block;
+            we.SetCoverSides(tc.CoverSides);
+            we.SetCovers(tc.Covers.clone());
+            return true;
         }
 
         return false;
