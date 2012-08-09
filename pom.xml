@@ -103,13 +103,13 @@
       <groupId>org.bukkit</groupId>
       <artifactId>craftbukkit</artifactId>
       <version>1.2.5-R4.1-SNAPSHOT</version>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>eloraam</groupId>
       <artifactId>redpower-all</artifactId>
       <version>2.0p5b2-mcpc1.2.5</version>
-      <type>jar</type>
-      <scope>compile</scope>
+      <optional>true</optional>
     </dependency>
   </dependencies>
 
